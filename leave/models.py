@@ -1,6 +1,7 @@
 from django.db import models
 from helpers.choices import APPROVAL_CHOICES, LEAVE_CHOICES, PENDING, FULL
 from helpers.models import BaseModel
+from employee.models import CustomUser
 
 # Create your models here.
 class Leave(BaseModel):
@@ -15,27 +16,27 @@ class Leave(BaseModel):
         return self.name
 
 
-class EmployeeLeave(models.Model):
-	employee = models.ForeignKey(CustomUser, null = True, on_delete = models.CASCADE, related_name="leaves")
-	leave = models.ForeignKey(Leave, null=True, on_delete=models.CASCADE, related_name="leaves")
-	remaining = models.FloatField(default = 0)
-	can_apply = models.BooleanField(default=True)
+class EmployeeLeave(BaseModel):
+    employee = models.ForeignKey(CustomUser, null = True, on_delete = models.CASCADE, related_name="leaves")
+    leave = models.ForeignKey(Leave, null=True, on_delete=models.CASCADE, related_name="leaves")
+    remaining_leave = models.FloatField(null=True, blank=True)
+    can_apply_leave = models.BooleanField(default=True)
 
-	def __str__(self):
-		return self.employee.first_name
+    def __str__(self):
+        return self.employee.first_name
 
-	class Meta:
-		ordering = ['-id']
+    class Meta:
+        ordering = ['-id']
 
 
 class LeaveRequest(BaseModel):	
     employee = models.ForeignKey(CustomUser, on_delete=models.PROTECT, null=True, related_name="leave_requests")
     leave = models.ForeignKey(Leave, on_delete=models.PROTECT, null=True, related_name="leave_requests")
-    leave_type = models.CharField(choices=LEAVE_CHOICES, default=FULL, max_length=10)
+    leave_type = models.CharField(choices=LEAVE_CHOICES, default=FULL, max_length=15)
     date_from = models.DateField()
     date_to = models.DateField()
     remarks = models.TextField()
-    approval_status = models.CharField(choices=APPROVAL_CHOICES, max_length=10, default=PENDING)
+    approval_status = models.CharField(choices=APPROVAL_CHOICES, max_length=15, default=PENDING)
 
     class Meta:
         ordering = ["-id"]

@@ -1,0 +1,15 @@
+.idea
+/tmp/
+/htmlcov/
+.coverage
+__pycache__/
+*.pyc
+.pytest_cache/
+ngrok
+.vscode
+/log/
+*.env
+virtualenvs/
+local_settings.py
+load_balancer/.certi/*.pem
+celerybeat-schedule

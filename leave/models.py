@@ -4,6 +4,15 @@ from helpers.models import BaseModel
 from employee.models import CustomUser
 
 # Create your models here.
+# class FinancialYear(BaseModel):
+#     name = models.CharField(max_length = 20, default = "FY 77/78")
+# 	start_date = models.DateField()
+# 	end_date = models.DateField()
+
+# 	def __str__(self):
+# 		return self.name
+
+
 class Leave(BaseModel):
     name = models.CharField(max_length=50)
     no_of_days = models.FloatField()

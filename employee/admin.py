@@ -17,7 +17,7 @@ class EmployeeAdmin(admin.ModelAdmin):
             ),
             (_("Employee Status"), {
                 'fields':(
-                    'is_employee', 'is_superuser'
+                    'is_employee', 'is_superuser','groups'
                     )
                 }
             )

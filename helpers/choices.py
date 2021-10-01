@@ -1,20 +1,13 @@
-PENDING = "Pending"
-YES = "Yes"
-NO = "No"
+from .constants import LEAVE_TYPE, APPROVAL_TYPE
 
 APPROVAL_CHOICES = (
-	(PENDING, PENDING),
-	(YES, YES),
-	(NO,NO)
+	(APPROVAL_TYPE['PENDING'], "Pending"),
+	(APPROVAL_TYPE['YES'], "Approved"),
+	(APPROVAL_TYPE['NO'],"Not Approved")
 )
 
 
-FULL = 'Full'
-FIRST_HALF = "First Half"
-SECOND_HALF = "Second Half"
-
 LEAVE_CHOICES = (
-	(FULL,FULL),
-	(FIRST_HALF,FIRST_HALF),
-	(SECOND_HALF,SECOND_HALF),
+	(LEAVE_TYPE['FULL'],'Full'),
+	(LEAVE_TYPE['HALF'],'Half'),
 )

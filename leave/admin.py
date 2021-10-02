@@ -3,10 +3,12 @@ from leave.models.leave import Leave
 from leave.models.leave_request import LeaveRequest
 from leave.models.employee_leave import EmployeeLeave
 from leave.models.leave_approval import LeaveApproval
+from leave.forms import LeaveRequestForm
 
 
 class LeaveRequestAdmin(admin.ModelAdmin):
     list_display = ('employee', 'leave', 'date_from', 'date_to', 'approval_status')
+    # form = LeaveRequestForm
 
 
 class EmployeeLeaveAdmin(admin.ModelAdmin):
@@ -14,7 +16,7 @@ class EmployeeLeaveAdmin(admin.ModelAdmin):
 
 
 class LeaveApprovalAdmin(admin.ModelAdmin):
-    list_display = ('leave_request', 'is_approved')
+    list_display = ('leave_request', 'approval_status')
 
 
 admin.site.register(Leave)

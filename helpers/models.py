@@ -16,7 +16,7 @@ class BaseModel(models.Model):
     Base model for possibly every other model.
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now,blank=True)
     modified_at = models.DateTimeField(auto_now=True)
 
     objects = BaseModelManager()

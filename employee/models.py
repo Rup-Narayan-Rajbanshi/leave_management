@@ -13,4 +13,8 @@ class CustomUser(AbstractUser):
         verbose_name = 'Employee'
 
     def __str__(self):
-        return self.first_name
+        return self.first_name +" "+self.last_name
+
+    # @property
+    # def full_name(self):
+    #     return self.first_name + " "+ self.last_name

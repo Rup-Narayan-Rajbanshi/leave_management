@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% block css %}
+<style>
+    .col {
+        color: white;
+    }
+
+</style>
+{% endblock css %}
+{% block content %}
+
+<section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+        <form method='POST' action='' enctype='multipart/form-data' style="margin: 8px;">{% csrf_token %}
+            {% if form.errors %}
+            <p>{{form.errors}}</p>
+            {% endif %}
+			<div class="row">
+				<div style="color: white" class="col-md-3">
+				{{ form.leave|as_crispy_field}}
+				</div>
+				<div style="color: white" class="col-md-3">
+				{{ form.leave_type|as_crispy_field}}
+				</div>
+				<div style="color: white" class="col-md-3">
+				{{ form.date_from|as_crispy_field}}
+				</div>
+				<div style="color: white" class="col-md-3">
+				{{ form.date_to|as_crispy_field}}
+                </div>
+                <div style="color: white" class="col-md-12">
+                {{ form.remarks|as_crispy_field}}
+                </div>
+                <div style="padding-top:10px" class='col-md-4'>
+                    <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                </div>
+            </div>
+        </form>
+    </div>
+  
+  </section><!-- End Hero -->
+  
+
+{% endblock %}

@@ -16,7 +16,26 @@ def create_employee_leave(sender, instance, created, *args, **kwargs):
         leave = instance
         employees = CustomUser.objects.filter(groups__name__iexact = "employee")
         for employee in employees:
-            employee_leave= EmployeeLeave.objects.get_or_create(employee=employee, leave=leave, remaining_leave=leave.no_of_days)
+            employee_leave= EmployeeLeave.objects.get_or_create(employee=employee,
+                                                                leave=leave,
+                                                                total_days=leave.no_of_days,
+                                                                remaining_leave=leave.no_of_days)
+
+
+@receiver(post_save, sender = CustomUser)
+def create_employee_leave(sender, instance, created, *args, **kwargs):
+    """
+    Allocate a employee_leave on creating any new leave.
+    """
+    if created:
+        employee = instance
+        leaves = Leave.objects.all()
+        if leaves:
+            for leave in leaves:
+                employee_leave= EmployeeLeave.objects.get_or_create(employee=employee,
+                                                                    leave=leave,
+                                                                    total_days=leave.no_of_days,
+                                                                    remaining_leave=leave.no_of_days)
 
 
 @receiver(post_save, sender = LeaveRequest)

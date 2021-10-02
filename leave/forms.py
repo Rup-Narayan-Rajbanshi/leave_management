@@ -1,18 +1,24 @@
 from django import forms
-from leave.models.leave import LeaveRequest
+from leave.models.leave_request import LeaveRequest
+from leave.models.employee_leave import EmployeeLeave
 
 class LeaveRequestForm(forms.ModelForm):
     class Meta:
         model = LeaveRequest
-        exclude = ['approval_status']
+        exclude = ['employee','approval_status']
     
     # def clean(self):
     #     '''
-    #     Verify both passwords match.
+       
     #     '''
     #     cleaned_data = super().clean()
-    #     password = cleaned_data.get("password")
-    #     password_2 = cleaned_data.get("password_2")
+    #     date_from = cleaned_data.get("date_from")
+    #     date_to = cleaned_data.get("date_to")
+    #     leave_type = cleaned_data.get("leave_type")
+    #     no_of_days = LeaveRequest.no_of_days(date_from, date_to, leave_type)
+    #     employee_leave = EmployeeLeave.objects.get()
+
+        
     #     if password is not None and password != password_2:
     #         self.add_error("password_2", "Your passwords must match")
     #     return cleaned_data

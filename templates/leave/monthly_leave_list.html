@@ -5,29 +5,26 @@
 {% block css %}
 <link href="{%  static '/assets/css/table.css'  %}" rel="stylesheet">
 {% endblock css %}
-
 {% block content %}
+
 <section id="hero" class="d-flex align-items-center">
 
 <div class="container">       
     <div class="tableFixHead">
-      <button class="btn btn-success"><a href="{% url 'leave:add-leave' %}"  style="color: white;">Add Leave</a></button>
         <table>
           <thead>
             <tr>
-              <th>Leave</th>
-              <th>Date From</th>
-              <th>Date To</th>
-              <th>Approved</th>
+              <th>Month</th>
+              <th>Number of Days</th>
             </tr>
           </thead>
           <tbody>
-              {% for leave_request in leave_requests %}
+              {% for k,v in monthly_leaves.items %}
             <tr>
-              <td>{{leave_request.leave}}</td>
-              <td>{{leave_request.date_from}}</td>
-              <td>{{leave_request.date_to}}</td>
-              <td>{{leave_request.approval_status}}</td>
+              <td>{% if k == 1 %}Jan{% elif k == 2 %}Feb{% elif k == 3 %}Mar{% elif k == 4 %}April{% elif k == 5 %}May
+                {% elif k == 6 %}June {% elif k == 7 %}July {% elif k == 8 %}August {% elif k == 9 %}Sept {% elif k == 10 %}Oct
+                {% elif k == 11 %}Nov {% elif k == 12 %}December {%endif%}</td>
+              <td>{{v}}</td>
             </tr>
             {% endfor %}
             
@@ -35,7 +32,8 @@
         </table>
   </div>
 
-</section><!-- End Hero -->
+   
+  </section><!-- End Hero -->
   
 
 {% endblock %}

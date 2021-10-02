@@ -19,16 +19,13 @@
             <p>{{form.errors}}</p>
             {% endif %}
 			<div class="row">
-				<div style="color: white" class="col-md-3">
+				<div style="color: white" class="col-md-4">
 				{{ form.leave|as_crispy_field}}
 				</div>
-				<div style="color: white" class="col-md-3">
-				{{ form.leave_type|as_crispy_field}}
-				</div>
-				<div style="color: white" class="col-md-3">
+				<div style="color: white" class="col-md-4">
 				{{ form.date_from|as_crispy_field}}
 				</div>
-				<div style="color: white" class="col-md-3">
+				<div style="color: white" class="col-md-4">
 				{{ form.date_to|as_crispy_field}}
                 </div>
                 <div style="color: white" class="col-md-12">

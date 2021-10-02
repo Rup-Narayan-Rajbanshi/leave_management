@@ -2,7 +2,6 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from leave.models.leave import Leave
 from leave.models.employee_leave import EmployeeLeave
-from leave.models.leave_approval import LeaveApproval
 from leave.models.leave_request import LeaveRequest
 from employee.models import CustomUser
 
@@ -37,12 +36,3 @@ def create_employee_leave(sender, instance, created, *args, **kwargs):
                                                                     total_days=leave.no_of_days,
                                                                     remaining_leave=leave.no_of_days)
 
-
-@receiver(post_save, sender = LeaveRequest)
-def create_leave_approval(sender, instance, created, *args, **kwargs):
-    """
-    Create a approval for each leave request
-    """
-    if created:
-        leave_request = instance
-        approval = LeaveApproval.objects.get_or_create(leave_request=leave_request)

@@ -9,7 +9,7 @@ class LeaveCreateView(CreateView):
     model = LeaveRequest
     form_class = LeaveRequestForm
     template_name = 'leave/leave_request_form.html'
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("leave:leave-request-list")
 
     def form_valid(self, form):
         """If the form is valid, save the associated model."""

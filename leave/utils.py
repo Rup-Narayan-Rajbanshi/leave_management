@@ -8,3 +8,11 @@ def no_of_days(to_date, from_date):
 
 def no_of_leaves(to_date, from_date):
     pass
+
+
+def filter_leave_dates(date, month):
+
+    if date.month == month:
+        return True
+    else:
+        return False

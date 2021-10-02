@@ -4,38 +4,71 @@
 
 {% block css %}
 <link href="{%  static '/assets/css/table.css'  %}" rel="stylesheet">
+<style>
+  div.groove{border-style: groove;}
+</style>
 {% endblock css %}
 
 {% block content %}
 <section id="hero" class="d-flex align-items-center">
 
-<div class="container">       
-    <div class="tableFixHead">
-      <button class="btn btn-success"><a href="{% url 'leave:add-leave' %}"  style="color: white;">Add Leave</a></button>
-        <table>
-          <thead>
-            <tr>
-              <th>Leave</th>
-              <th>Date From</th>
-              <th>Date To</th>
-              <th>Approved</th>
-            </tr>
-          </thead>
-          <tbody>
-              {% for leave_request in leave_requests %}
-            <tr>
-              <td>{{leave_request.leave}}</td>
-              <td>{{leave_request.date_from}}</td>
-              <td>{{leave_request.date_to}}</td>
-              <td>{{leave_request.approval_status}}</td>
-            </tr>
-            {% endfor %}
-            
-          </tbody>
-        </table>
+<div class="container">
+  <button class="btn btn-success"><a href="{% url 'leave:add-leave' %}"  style="color: white;">Add Leave</a></button>
+  <div class="row">
+    <div class="col-md-8"> 
+      <div class="tableFixHead">
+          <table>
+            <thead>
+              <tr>
+                <th>Leave Type</th>
+                <th>Applied Date</th>
+                <th>Date From</th>
+                <th>Date To</th>
+                <th>Approved</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for leave_request in leave_requests %}
+              <tr>
+                <td>{{leave_request.leave}}</td>
+                <td>{{leave_request.created_at}}</td>
+                <td>{{leave_request.date_from}}</td>
+                <td>{{leave_request.date_to}}</td>
+                <td>{{leave_request.approval_status}}</td>
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="groove col-md-4"> 
+        <div class="tableFixHead">
+            <table>
+              <thead>
+                <tr>
+                  <th>Leave Type</th>
+                  <th>Total Days</th>
+                  <th>Remaining</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for leave in allocated_leaves %}
+                <tr>
+                  <td>{{leave.leave}}</td>
+                  <td>{{leave.leave.no_of_days}}</td>
+                  <td>{{leave.remaining_leave}}</td>
+                </tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
   </div>
+</section>
 
-</section><!-- End Hero -->
   
 
 {% endblock %}

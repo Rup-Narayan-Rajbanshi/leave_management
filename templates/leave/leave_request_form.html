@@ -15,9 +15,15 @@
 
     <div class="container">
         <form method='POST' action='' enctype='multipart/form-data' style="margin: 8px;">{% csrf_token %}
-            {% if form.errors %}
-            <p>{{form.errors}}</p>
-            {% endif %}
+            <div class = "form-row">
+                {% for error in form.non_field_errors %}
+                  <div class = "alert alert-danger invalid-feedback d-block text-center mx-3 fade show" role="alert">
+                    {{error|escape}}
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                {% endfor %}
+              </div>
 			<div class="row">
 				<div style="color: white" class="col-md-4">
 				{{ form.leave|as_crispy_field}}

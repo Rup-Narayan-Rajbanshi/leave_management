@@ -82,6 +82,11 @@
           {% else %}
           <li><a class="nav-link scrollto active" href="{% url 'leave:leave-request-list' %}">Leaves</a></li>
           {% endif %}
+          {% if user.is_authenticated %}
+          <li><a class="nav-link scrollto active" href="{% url 'employee:logout' %}">Logout</a></li>
+          {% else %}
+          <li><a class="nav-link scrollto active" href="{% url 'employee:login' %}">Login</a></li>
+          {% endif %}
       </nav><!-- .navbar -->
 
     </div>

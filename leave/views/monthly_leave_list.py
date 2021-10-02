@@ -1,4 +1,5 @@
 from django.views.generic import DetailView
+from helpers.mixins import SuperUserRequiredMixin
 from leave.models.leave_request import LeaveRequest
 from employee.models import CustomUser
 from leave.forms import LeaveRequestForm
@@ -9,7 +10,7 @@ from django.urls import reverse_lazy, reverse
 from datetime import date, timedelta
 
 
-class MonthlyLeaveListView(DetailView):
+class MonthlyLeaveListView(SuperUserRequiredMixin, DetailView):
     template_name = 'leave/monthly_leave_list.html'
 
     def get_object(self, queryset=None):

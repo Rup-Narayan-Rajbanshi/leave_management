@@ -15,4 +15,4 @@ class EmployeeLeave(BaseModel):
         return self.employee.first_name
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-created_at']

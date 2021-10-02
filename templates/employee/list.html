@@ -15,7 +15,7 @@
 <section id="hero" class="d-flex align-items-center">
 
 <div class="container">      
-    <div class="tableFixHead"><h2>{% now " Y" %}</h2>
+    <div class="tableFixHead"><h2>Financial Year :{% now " Y" %}</h2>
         <table>
           <thead>
             <tr>
@@ -23,7 +23,7 @@
               <th>Email</th>
               <th>Total leave ( Days )</th>
               <th>Remaining Leave ( Days )</th>
-              <th>Detail</th>
+              <th>Leave Detail</th>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +33,7 @@
               <td>{{employee.email}}</td>
               <td>{{employee.total_leave_count}}</td>
               <td>{{employee.remaining_leave_count}}</td>
-              <td><button class="btn btn-success" ><a href="{% url 'leave:monthly-leave-list' employee.id %}" style="color: white;">Details</a></button></td>
+              <td><button class="btn btn-success" ><a href="{% url 'leave:monthly-leave-list' employee.id %}" style="color: white;">View</a></button></td>
             </tr>
             {% endfor %}
             

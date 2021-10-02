@@ -8,7 +8,7 @@ class Leave(BaseModel):
     is_active = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ["-id"]
+        ordering = ["-created_at"]
 
     def __str__(self):
         return self.name

@@ -9,7 +9,7 @@ class CustomUser(AbstractUser):
     modified_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["-id"]
+        ordering = ["-created_at"]
         verbose_name = 'Employee'
 
     def __str__(self):

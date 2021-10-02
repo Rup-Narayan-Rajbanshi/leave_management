@@ -2,13 +2,13 @@ from django.contrib.auth import (authenticate ,get_user_model ,login, logout)
 from .forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, JsonResponse, Http404
-from .views import UserLoginForm
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from employee.models import CustomUser
 from leave.models.employee_leave import EmployeeLeave
 
 from django.db.models import Count, Sum
+from django.contrib.auth.decorators import user_passes_test
 
 
 # Create your views here.
@@ -25,8 +25,9 @@ def login_view(request):
 
 def logout_view(request):
 	logout(request)
-	return HttpResponseRedirect(reverse('user:login'))
+	return HttpResponseRedirect(reverse('employee:login'))
 
+@user_passes_test(lambda u: u.is_superuser)
 def employee_list(request):
 	employees = CustomUser.objects.filter(groups__name='employee').annotate(
 																		remaining_leave_count=Sum('leaves__remaining_leave'),

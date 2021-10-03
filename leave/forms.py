@@ -19,21 +19,14 @@ class LeaveRequestForm(forms.ModelForm):
             if field in ("date_from","date_to"):
                 self.fields[field].widget.attrs.update({'placeholder': 'YYYY-MM-DD'})
 
-    def clean_date_to(self):
-        from_date = self.cleaned_data.get('date_from')
-        to_date = self.cleaned_data.get('date_to')
-
-        # if user enters to_date smaller than From date raise error message
-        if to_date < from_date:
-            raise forms.ValidationError("Date to must be greater than Date from.")
-
-        return to_date
-
     def clean(self):
         cleaned_data = super().clean()
         leave = cleaned_data.get('leave')
         to_date = cleaned_data.get("date_to")
         from_date = cleaned_data.get("date_from")
+
+        if to_date < from_date:
+            raise forms.ValidationError("Date to must be greater than Date from.")
 
         # if particular leave request already exists raise error message
         leave_request_exists = LeaveRequest.objects.filter(

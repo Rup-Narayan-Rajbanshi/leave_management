@@ -16,4 +16,8 @@ Description
 - Request http://127.0.0.1:8000/admin/ in the url to login as superuser.
 - After sucessful login add Leave such as Sick leave, Casual leave with number of days from the admin panen.
 - Then you can create employees, Make sure to add group "employee" to the user added.
-- Then an employee can login and request leave, track leaves througn the app. 
+- Then an employee can login and request leave, track leaves througn the app.
+
+Note: .env file has to be added in project directory for secret key
+
+Branch leave-production is for deployment in Heroku.

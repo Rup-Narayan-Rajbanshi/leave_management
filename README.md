@@ -1,4 +1,5 @@
 # Leave Tracker
+Live Demo :https://rup-leave-tracker.herokuapp.com/
 
 Description
 - This app allows employee to request leave and track their leave detail based on the leave approval.
@@ -21,4 +22,3 @@ Description
 Note: .env file has to be added in project directory for secret key
 
 Branch leave-production is for deployment in Heroku.
-Live Demo :https://rup-leave-tracker.herokuapp.com/

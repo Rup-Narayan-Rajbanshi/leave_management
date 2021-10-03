@@ -12,11 +12,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DATABASES = {
     'default':{
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('NAME'),
-        'USER': os.environ.get('USER'),
-        'HOST': os.environ.get('HOST'),
-        'PORT': os.environ.get('PORT'),
-        'PASSWORD':os.environ.get('PASSWORD'),
+        'NAME': 'dftha8tuki4u3l',
+        'USER': 'cnzsaytvkrzlda',
+        'HOST': 'ec2-34-233-105-94.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'PASSWORD': '19b36165d253dfaea70deba76b192dbcd2de08cab1aa56d2219440fc5d1a86db',
     }
 }
 

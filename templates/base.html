@@ -76,7 +76,6 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          
           {% if user.is_superuser %}
           <li><a class="nav-link scrollto active" href="{% url 'employee:employees-list' %}">Employee List</a></li>
           {% else %}

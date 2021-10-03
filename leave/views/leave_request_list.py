@@ -1,12 +1,15 @@
-from django.views.generic import ListView
 from helpers.mixins import GroupRequiredMixin
 from leave.models.leave_request import LeaveRequest
 from leave.models.employee_leave import EmployeeLeave
 
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 
 
 class LeaveRequestListView(GroupRequiredMixin, ListView):
+    """
+    View to list all the leave requests and Allocated leave of a loggedin user
+    """
     model = LeaveRequest
     template_name = "leave/leave_request_list.html"
 

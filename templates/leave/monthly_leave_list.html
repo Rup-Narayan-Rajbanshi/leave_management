@@ -5,35 +5,37 @@
 {% block css %}
 <link href="{%  static '/assets/css/table.css'  %}" rel="stylesheet">
 {% endblock css %}
+
 {% block content %}
 
 <section id="hero" class="d-flex align-items-center">
-
-<div class="container">       
+  <div class="container">       
     <div class="tableFixHead">
-        <table>
-          <thead>
-            <tr>
-              <th>Month</th>
-              <th>Number of Leave (Days)</th>
-            </tr>
-          </thead>
-          <tbody>
-              {% for k,v in monthly_leaves.items %}
-            <tr>
-              <td>{% if k == 1 %}Jan{% elif k == 2 %}Feb{% elif k == 3 %}Mar{% elif k == 4 %}April{% elif k == 5 %}May
-                {% elif k == 6 %}June {% elif k == 7 %}July {% elif k == 8 %}August {% elif k == 9 %}Sept {% elif k == 10 %}Oct
-                {% elif k == 11 %}Nov {% elif k == 12 %}December {%endif%}</td>
-              <td>{{v}}</td>
-            </tr>
-            {% endfor %}
-            
-          </tbody>
-        </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Number of Leave (Days)</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for k,v in monthly_leaves.items %}
+          <tr>
+            <td>
+              {% if k == 1 %}Jan{% elif k == 2 %}Feb{% elif k == 3 %}Mar{% elif k == 4 %}April{% elif k == 5 %}May
+              {% elif k == 6 %}June {% elif k == 7 %}July {% elif k == 8 %}August {% elif k == 9 %}Sept {% elif k == 10 %}Oct
+              {% elif k == 11 %}Nov {% elif k == 12 %}December {%endif%}
+            </td>
+            <td>
+                {{v}}
+            </td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
   </div>
-
-   
-  </section><!-- End Hero -->
+</section>
   
-
 {% endblock %}

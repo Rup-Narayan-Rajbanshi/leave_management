@@ -1,11 +1,10 @@
-from django.views.generic import DetailView
 from helpers.mixins import SuperUserRequiredMixin
 from leave.models.leave_request import LeaveRequest
 from employee.models import CustomUser
 from leave.forms import LeaveRequestForm
 from helpers.constants import APPROVAL_TYPE
-from leave.utils import filter_leave_dates
 
+from django.views.generic import DetailView
 from django.urls import reverse_lazy, reverse
 from datetime import date, timedelta
 
@@ -43,8 +42,6 @@ class MonthlyLeaveListView(SuperUserRequiredMixin, DetailView):
                 if month == date.month:
                     date_list.append(date)
                     leaves_dates_dict[month]=len(date_list)
-        
-        print(leaves_dates_dict)
 
         context = {
             'monthly_leaves': leaves_dates_dict

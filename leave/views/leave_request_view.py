@@ -1,12 +1,15 @@
-from django.views.generic.edit import CreateView
 from helpers.mixins import GroupRequiredMixin
 from leave.models.leave_request import LeaveRequest
 from leave.forms import LeaveRequestForm
 
 from django.urls import reverse_lazy, reverse
+from django.views.generic.edit import CreateView
 
 
 class LeaveCreateView(GroupRequiredMixin, CreateView):
+    """
+    View to create leave requests of a loggedin employee
+    """
     model = LeaveRequest
     form_class = LeaveRequestForm
     template_name = 'leave/leave_request_form.html'

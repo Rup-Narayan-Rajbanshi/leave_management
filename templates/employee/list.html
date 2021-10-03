@@ -4,45 +4,35 @@
 
 {% block css %}
 <link href="{%  static '/assets/css/table.css'  %}" rel="stylesheet">
-<style>
-  
-
-
-</style>
 {% endblock css %}
+
 {% block content %}
-
 <section id="hero" class="d-flex align-items-center">
-
-<div class="container">      
+  <div class="container">      
     <div class="tableFixHead"><h2>Financial Year :{% now " Y" %}</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Total leave ( Days )</th>
-              <th>Remaining Leave ( Days )</th>
-              <th>Leave Detail</th>
-            </tr>
-          </thead>
-          <tbody>
-              {% for employee in employees %}
-            <tr>
-              <td>{{employee.first_name}} {{employee.last_name}}</td>
-              <td>{{employee.email}}</td>
-              <td>{{employee.total_leave_count}}</td>
-              <td>{{employee.remaining_leave_count}}</td>
-              <td><button class="btn btn-success" ><a href="{% url 'leave:monthly-leave-list' employee.id %}" style="color: white;">View</a></button></td>
-            </tr>
-            {% endfor %}
-            
-          </tbody>
-        </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Total leave ( Days )</th>
+            <th>Remaining Leave ( Days )</th>
+            <th>Leave Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+          <tr>
+            <td>{{employee.first_name}} {{employee.last_name}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.total_leave_count}}</td>
+            <td>{{employee.remaining_leave_count}}</td>
+            <td><button class="btn btn-success" ><a href="{% url 'leave:monthly-leave-list' employee.id %}" style="color: white;">View</a></button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
-
-   
-  </section><!-- End Hero -->
-  
-
+</section>
 {% endblock %}

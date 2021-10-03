@@ -75,38 +75,39 @@
     </div>
   </header><!-- End Header -->
 
-    <section id="hero" class="d-flex align-items-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-                    <h1>login</h1>
-                    {% if form.errors %}
-                    <p>Your username and password didn't match. Please try again.</p>
-                    {% endif %}
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>login</h1>
+          
+          {% if form.errors %}
+          <p>Your username and password didn't match. Please try again.</p>
+          {% endif %}
 
-                    {% if next %}
-                        {% if user.is_authenticated %}
-                        <p>Your account doesn't have access to this page. To proceed,
-                        please login with an account that has access.</p>
-                        {% else %}
-                        <p>Please login to see this page.</p>
-                        {% endif %}
-                    {% endif %}
+          {% if next %}
+            {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+            {% else %}
+            <p>Please login to see this page.</p>
+            {% endif %}
+          {% endif %}
 
-                    <form method="post" action="{% url 'employee:login' %}">
-                        {% csrf_token %}
-                        <div class="form-group">
-                          {{form}}
-                        </div>
-                        <input type="submit" value="login" class="btn btn-success mt-2">
-                        <input type="hidden" name="next" value="{{ next }}">
-                    </form>
-                </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                </div>
+          <form method="post" action="{% url 'employee:login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              {{form}}
             </div>
+            <input type="submit" value="login" class="btn btn-success mt-2">
+            <input type="hidden" name="next" value="{{ next }}">
+          </form>
         </div>
-    </section><!-- End Hero -->
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

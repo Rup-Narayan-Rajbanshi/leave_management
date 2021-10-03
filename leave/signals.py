@@ -1,9 +1,10 @@
-from django.dispatch import receiver
-from django.db.models.signals import post_save
 from leave.models.leave import Leave
 from leave.models.employee_leave import EmployeeLeave
 from leave.models.leave_request import LeaveRequest
 from employee.models import CustomUser
+
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 @receiver(post_save, sender = Leave)

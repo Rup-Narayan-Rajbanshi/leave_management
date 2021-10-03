@@ -13,6 +13,9 @@ from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 def login_view(request):
+	"""
+	Login View
+	"""
 	form = UserLoginForm(request.POST or None)
 	if form.is_valid():
 		username = form.cleaned_data.get('username')
@@ -24,11 +27,17 @@ def login_view(request):
 	return render(request, 'employee/login.html', context=context)
 
 def logout_view(request):
+	"""
+	Logout view
+	"""
 	logout(request)
 	return HttpResponseRedirect(reverse('employee:login'))
 
 @user_passes_test(lambda u: u.is_superuser)
 def employee_list(request):
+	"""
+	List of employees with remaining leaves, total leaves taken
+	"""
 	employees = CustomUser.objects.filter(groups__name='employee').annotate(
 																		remaining_leave_count=Sum('leaves__remaining_leave'),
 																		total_leave_count=Sum('leaves__total_days'))

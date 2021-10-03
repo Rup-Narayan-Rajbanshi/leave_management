@@ -1,4 +1,5 @@
 from django.urls import path
+
 from leave.views.leave_request_view import LeaveCreateView
 from leave.views.leave_request_list import LeaveRequestListView
 from leave.views.monthly_leave_list import MonthlyLeaveListView
